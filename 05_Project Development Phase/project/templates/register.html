@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% set active_page = 'register' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card shadow-sm p-4">
+            <h3 class="mb-4">Register</h3>
+            <form method="post">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Username</label>
+                        <input name="username" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Phone</label>
+                        <input name="phone" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Location</label>
+                        <input name="location" class="form-control">
+                    </div>
+                </div>
+                <button class="btn btn-primary mt-3 w-100">Create Account</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

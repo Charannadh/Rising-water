@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% set active_page = 'home' %}
+{% block content %}
+<section class="hero-card">
+    <div class="row align-items-center">
+        <div class="col-lg-7">
+            <h1 class="display-5 fw-bold text-primary">Smart flood intelligence for safer communities</h1>
+            <p class="lead">Monitor water conditions, train AI models, and receive predictive alerts before a flood becomes critical.</p>
+            <div class="d-flex gap-3 mt-4">
+                <a class="btn btn-primary" href="{{ url_for('register') }}">Get Started</a>
+                <a class="btn btn-outline-primary" href="{{ url_for('login') }}">Sign In</a>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <img src="{{ url_for('static', filename='images/hero.png') }}" class="img-fluid rounded shadow" alt="Flood monitoring dashboard">
+        </div>
+    </div>
+</section>
+<section class="row g-4 mt-3">
+    <div class="col-md-6 col-xl-3">
+        <div class="card stat-card shadow-sm">
+            <div class="card-body">
+                <h5><i class="fas fa-user-shield"></i> Users</h5>
+                <h2>{{ total_users }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-xl-3">
+        <div class="card stat-card shadow-sm">
+            <div class="card-body">
+                <h5><i class="fas fa-chart-line"></i> Predictions</h5>
+                <h2>{{ total_predictions }}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

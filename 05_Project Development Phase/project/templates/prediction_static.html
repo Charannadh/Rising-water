@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flood Prediction - Rising Waters</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+        }
+        .sidebar {
+            width: 250px;
+            background: #0d6efd;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .sidebar .brand {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .sidebar .nav-link {
+            color: white;
+            padding: 10px 12px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .topbar {
+            background: white;
+            border-bottom: 1px solid #e9ecef;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .main-content {
+            padding: 24px;
+            flex: 1;
+        }
+        .theme-toggle {
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            color: #0d6efd;
+        }
+        .card {
+            border: none;
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="brand">🌊 Rising Waters</div>
+        <a href="#" class="nav-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="#" class="nav-link active"><i class="fas fa-chart-line"></i> Prediction</a>
+        <a href="#" class="nav-link"><i class="fas fa-file-alt"></i> Reports</a>
+        <a href="#" class="nav-link"><i class="fas fa-chart-bar"></i> Analytics</a>
+        <a href="#" class="nav-link"><i class="fas fa-bell"></i> Alerts</a>
+        <a href="#" class="nav-link"><i class="fas fa-user"></i> Profile</a>
+    </div>
+    <div class="content">
+        <div class="topbar">
+            <div class="fw-bold">AI-Based Flood Early Warning System</div>
+            <div class="d-flex align-items-center gap-3">
+                <button id="themeToggle" class="theme-toggle"><i class="fas fa-moon"></i></button>
+                <span class="me-2">Welcome, Demo User</span>
+                <a href="#" class="btn btn-sm btn-outline-danger">Logout</a>
+            </div>
+        </div>
+        <main class="main-content">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm p-4">
+                        <h3 class="mb-4">Flood Prediction Form</h3>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Water Level</label>
+                                    <input type="number" step="0.1" name="water_level" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Rainfall</label>
+                                    <input type="number" step="0.1" name="rainfall" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Temperature</label>
+                                    <input type="number" step="0.1" name="temperature" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Humidity</label>
+                                    <input type="number" step="0.1" name="humidity" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">River Flow</label>
+                                    <input type="number" step="0.1" name="river_flow" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Soil Moisture</label>
+                                    <input type="number" step="0.1" name="soil_moisture" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Water Velocity</label>
+                                    <input type="number" step="0.1" name="water_velocity" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Previous Flood History</label>
+                                    <input type="number" step="1" name="previous_flood_history" class="form-control" required>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary mt-4">Run Prediction</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

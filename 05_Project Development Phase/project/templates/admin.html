@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% set active_page = 'admin' %}
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="card shadow-sm p-4">
+            <h4>User Management</h4>
+            <ul class="list-group mt-3">
+                {% for user in users %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{{ user.username }} ({{ user.role }})</span>
+                    <form method="post" action="{{ url_for('delete_user', user_id=user.id) }}">
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card shadow-sm p-4">
+            <h4>Prediction Logs</h4>
+            <ul class="list-group mt-3">
+                {% for item in predictions %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{{ item.prediction_label }} - {{ item.risk_level }}</span>
+                    <form method="post" action="{{ url_for('delete_prediction', prediction_id=item.id) }}">
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

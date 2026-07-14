@@ -1,0 +1,10 @@
+{
+  "best_model": "Decision Tree",
+  "accuracy": 0.9365079365079365,
+  "results": {
+    "Random Forest": 0.873015873015873,
+    "Decision Tree": 0.9365079365079365,
+    "Logistic Regression": 0.49206349206349204,
+    "Support Vector Machine": 0.49206349206349204
+  }
+}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% set active_page = 'analytics' %}
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-7">
+        <div class="card shadow-sm p-3">
+            <h5>Risk Distribution</h5>
+            <canvas id="pieChart" height="220"></canvas>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="card shadow-sm p-3">
+            <h5>Monthly Report</h5>
+            <ul class="list-group list-group-flush">
+                {% for key, value in counts.items() %}
+                <li class="list-group-item d-flex justify-content-between"><span>{{ key }}</span><strong>{{ value }}</strong></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+const pieCtx = document.getElementById('pieChart');
+new Chart(pieCtx, {
+  type: 'pie',
+  data: {
+    labels: {{ counts.keys() | list | tojson }},
+    datasets: [{ data: {{ counts.values() | list | tojson }}, backgroundColor: ['#0d6efd', '#ffc107', '#fd7e14', '#dc3545'] }]
+  }
+});
+</script>
+{% endblock %}

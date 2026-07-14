@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% set active_page = 'dashboard' %}
+{% block content %}
+<div class="row g-4">
+    <div class="col-xl-3 col-md-6">
+        <div class="card stat-card shadow-sm">
+            <div class="card-body">
+                <h6 class="text-muted">Current Water Level</h6>
+                <h2>{{ latest.water_level }} m</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card stat-card shadow-sm">
+            <div class="card-body">
+                <h6 class="text-muted">Water Level Percentage</h6>
+                <h2>{{ level_percentage }}%</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card stat-card shadow-sm">
+            <div class="card-body">
+                <h6 class="text-muted">Rainfall</h6>
+                <h2>{{ latest.rainfall }} mm</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card stat-card shadow-sm">
+            <div class="card-body">
+                <h6 class="text-muted">Prediction</h6>
+                <h2>{{ latest.prediction_label }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row g-4 mt-2">
+    <div class="col-lg-8">
+        <div class="card shadow-sm p-3">
+            <h5>Live Water Trend</h5>
+            <canvas id="trendChart" height="200"></canvas>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card shadow-sm p-3">
+            <h5>Recent Alerts</h5>
+            <ul class="list-group list-group-flush">
+                {% for alert in recent_alerts %}
+                <li class="list-group-item"><strong>{{ alert.severity }}</strong> - {{ alert.message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row g-4 mt-2">
+    <div class="col-lg-8">
+        <div class="card shadow-sm p-3">
+            <h5>Prediction History</h5>
+            <table class="table table-sm">
+                <thead><tr><th>Time</th><th>Risk</th><th>Confidence</th></tr></thead>
+                <tbody>
+                    {% for row in history %}
+                    <tr><td>{{ row.created_at }}</td><td>{{ row.prediction_label }}</td><td>{{ row.confidence }}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card shadow-sm p-3">
+            <h5>Current Status</h5>
+            <p><strong>Risk Level:</strong> {{ latest.risk_level }}</p>
+            <p><strong>Temperature:</strong> {{ latest.temperature }}°C</p>
+            <p><strong>Humidity:</strong> {{ latest.humidity }}%</p>
+            <p><strong>River Flow:</strong> {{ latest.river_flow }} m³/s</p>
+            <p><strong>Last Updated:</strong> {{ latest.created_at }}</p>
+        </div>
+    </div>
+</div>
+<script>
+const trendCtx = document.getElementById('trendChart');
+new Chart(trendCtx, {
+  type: 'line',
+  data: {
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    datasets: [{
+      label: 'Water Level',
+      data: [54, 58, 62, 70, 74, 79, 82],
+      borderColor: '#0d6efd',
+      tension: 0.3,
+      fill: true,
+      backgroundColor: 'rgba(13,110,253,0.15)'
+    }]
+  },
+  options: { responsive: true }
+});
+</script>
+{% endblock %}

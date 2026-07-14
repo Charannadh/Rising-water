@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% set active_page = 'reports' %}
+{% block content %}
+<div class="card shadow-sm p-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Prediction Reports</h3>
+        <div>
+            <a class="btn btn-outline-primary" href="{{ url_for('export_data', kind='csv') }}">Export CSV</a>
+            <a class="btn btn-outline-success" href="{{ url_for('export_data', kind='json') }}">Export JSON</a>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead><tr><th>ID</th><th>Water Level</th><th>Prediction</th><th>Risk</th><th>Date</th></tr></thead>
+        <tbody>
+            {% for row in rows %}
+            <tr><td>{{ row.id }}</td><td>{{ row.water_level }}</td><td>{{ row.prediction_label }}</td><td>{{ row.risk_level }}</td><td>{{ row.created_at }}</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

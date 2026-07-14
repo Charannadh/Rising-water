@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% set active_page = 'prediction' %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow-sm p-4">
+            <h3 class="mb-4">Flood Prediction Form</h3>
+            <form method="post">
+                <div class="row g-3">
+                    <div class="col-md-6"><label class="form-label">Water Level</label><input type="number" step="0.1" name="water_level" class="form-control" required></div>
+                    <div class="col-md-6"><label class="form-label">Rainfall</label><input type="number" step="0.1" name="rainfall" class="form-control" required></div>
+                    <div class="col-md-6"><label class="form-label">Temperature</label><input type="number" step="0.1" name="temperature" class="form-control" required></div>
+                    <div class="col-md-6"><label class="form-label">Humidity</label><input type="number" step="0.1" name="humidity" class="form-control" required></div>
+                    <div class="col-md-6"><label class="form-label">River Flow</label><input type="number" step="0.1" name="river_flow" class="form-control" required></div>
+                    <div class="col-md-6"><label class="form-label">Soil Moisture</label><input type="number" step="0.1" name="soil_moisture" class="form-control" required></div>
+                    <div class="col-md-6"><label class="form-label">Water Velocity</label><input type="number" step="0.1" name="water_velocity" class="form-control" required></div>
+                    <div class="col-md-6"><label class="form-label">Previous Flood History</label><input type="number" step="1" name="previous_flood_history" class="form-control" required></div>
+                </div>
+                <button class="btn btn-primary mt-4">Run Prediction</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
